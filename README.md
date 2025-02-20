@@ -5,8 +5,6 @@
 ---
 
 ## 🔷 SemanticST Overview
-
-
 SemanticST is a graph neural network-based unsupervised deep learning approach for spatial transcri
 ---
 
