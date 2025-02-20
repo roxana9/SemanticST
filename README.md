@@ -6,7 +6,6 @@
 
 ## 🔷 SemanticST Overview
 SemanticST is a graph neural network-based unsupervised deep learning approach for spatial transcri
----
 
 ## 🔷 Requirements  
 To run SemanticST, install the following dependencies:
