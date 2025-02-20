@@ -30,6 +30,9 @@ To run SemanticST, install the following dependencies:
 *POT==0.9.5
 *torchviz==0.0.2
 ```
+## 🔷 R Dependency  
+
+**SemanticST** requires **R (≥4.1.2)** for `rpy2`. 
 
 ##  Installation  
 
