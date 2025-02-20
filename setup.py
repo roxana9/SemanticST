@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="semanticst",  
-    version="0.1.0",
+    version="1.1.1",
     author="Roxana Zahedi",
     author_email="r.zahedi_nasab@unsw.edu.au",
     description="SemanticST: Spatially informed semantic graph learning for effective clustering and integration of spatial transcriptomics",
@@ -25,7 +25,9 @@ setup(
         "scikit-misc==0.3.1",
         "torch==2.5.1",
         "torch-geometric==2.6.1",
-	"rpy2==3.5.11"
+	"rpy2==3.5.11",
+	"POT>=0.9.5",
+	"torchviz==0.0.2",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
