@@ -6,6 +6,7 @@ setup(
     author="Roxana Zahedi",
     author_email="r.zahedi_nasab@unsw.edu.au",
     description="SemanticST: Spatially informed semantic graph learning for effective clustering and integration of spatial transcriptomics",
+    license="MIT",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/roxana9/SemanticST",
