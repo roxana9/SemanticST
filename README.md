@@ -14,7 +14,6 @@ Notably, we incorporated a mini-batch training option in SemanticST by training 
 ## 🔷 Requirements  
 To run **SemanticST**, install the following dependencies:
 
-```bash
 python==3.9.20
 numpy==1.23.4
 anndata==0.10.9
@@ -36,20 +35,25 @@ torchvision==0.20.1
 torchviz==0.0.2
 ---
 
+## Installation
 To install all dependencies, run:
-'''bash
+```bash
 pip install -r requirements.txt
+```
 ---
+
 
 ## 🚀 Installation  
 
 You can install **SemanticST** via **PyPI**:
 ```bash
 pip install semanticst
+```
 ---
 Or install from GitHub:
 ```bash
 pip install git+https://github.com/roxana9/SemanticST.git
+```
 ---
 
 ## 🔷 Step-by-Step Tutorial  
