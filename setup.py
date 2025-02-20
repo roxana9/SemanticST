@@ -24,11 +24,7 @@ setup(
         "scikit-misc==0.3.1",
         "torch==2.5.1",
         "torch-geometric==2.6.1",
-        "torch_scatter==2.1.2+pt25cu124",
-        "torch_sparse==0.6.18+pt25cu124",
-        "torchaudio==2.5.1",
-        "torchvision==0.20.1",
-        "torchviz==0.0.2"
+	"rpy2==3.5.11"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
