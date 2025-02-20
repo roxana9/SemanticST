@@ -2,6 +2,7 @@
 
 ![SemanticST Pipeline](https://github.com/roxana9/SemanticST/raw/main/semanticst_figure.png)
 
+---
 ## 🔷 SemanticST Overview
 
 
