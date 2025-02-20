@@ -5,11 +5,31 @@
 ---
 
 ## 🔷 SemanticST Overview
-SemanticST is a graph neural network-based unsupervised deep learning approach for spatial transcri
+SemanticST is a **graph neural network-based unsupervised deep learning approach** for spatial transcriptomics data analysis. 
+
+SemanticST employs a **sophisticated learning strategy** to integrate gene expression and spatial information, enabling the model to learn a latent representation of spatial transcriptomics (ST) data. 
+
+SemanticST uses a **learnable weighted graph representation**, termed **Semantic Graphs**, to better capture the complexity and diversity of biological processes. 
+
+For each semantic graph, a **unique embedding** is learned using an autoencoder with **Graph Convolutional Network (GCN) layers**, representing distinct semantic features in latent space. 
+
+To combine these representations, **SemanticST introduces a learnable weight**, referred to as the **semantic score**, for each semantic graph. 
+
+The **final graph representation** is then dynamically fused by weighting and combining the individual embeddings based on their **semantic scores**, resulting in a more accurate and adaptive graph representation. 
+
+SemanticST incorporates the **MinCut loss function** together with the **Deep MinCut (DMC) learning algorithm**. 
+
+This approach not only **captures the global structure** of the graph but also **reduces redundant training time**. 
+
+More importantly, it ensures that the learned embeddings are both **meaningful and interpretable**, providing a more robust and insightful representation of the graph. 
+
+Notably, we incorporated a **mini-batch training option** in SemanticST by training the model on spatial graphs in smaller batches. This feature allows the learned semantic graph to maintain both local and global perspectives across batches, making **SemanticST memory-efficient and scalable**, enabling its application to any spatial transcriptomics dataset, regardless of the number of samples. 
+
 
 ## 🔷 Requirements  
 To run SemanticST, install the following dependencies:
 
+```bash
 *python==3.9.20
 *numpy==1.23.4
 *anndata==0.10.9
@@ -29,7 +49,7 @@ To run SemanticST, install the following dependencies:
 *torchaudio==2.5.1
 *torchvision==0.20.1
 *torchviz==0.0.2
----
+```
 
 ##  Installation  
 
