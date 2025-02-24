@@ -56,6 +56,5 @@ pip install -r requirements.txt
 
 For a full tutorial on how to use **SemanticST**, visit our documentation:  
 
-🔗 [**SemanticST Tutorial Webpage**](https://your-temp-webpage-link.com)  
+🔗 [**SemanticST Tutorial Webpage**]([https://semanticst-tutorial.readthedocs.io/en/latest/])  
 
-_(The webpage is still under development, but a temporary version is available.)_
