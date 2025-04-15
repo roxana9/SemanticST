@@ -38,8 +38,9 @@ def Anndata_reader(file_name,dtype):
     elif dtype=="Xenium":
         
         adata=sc.read_h5ad(file_name)
-        sc.pp.filter_cells(adata, min_counts=10)
-        sc.pp.filter_genes(adata, min_cells=5)
+        sc.pp.filter_cells(adata, min_counts=40)
+        sc.pp.filter_cells(adata, max_counts=1000)
+        sc.pp.log1p(adata)
        
     else:
         adata=sc.read_h5ad(file_name)

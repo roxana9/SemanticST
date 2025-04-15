@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: semanticst
-Version: 1.1.2
+Version: 1.1.3
 Summary: SemanticST: Spatially informed semantic graph learning for effective clustering and integration of spatial transcriptomics
 Home-page: https://github.com/roxana9/SemanticST
 Author: Roxana Zahedi
@@ -72,3 +72,4 @@ pip install -r requirements.txt
 For a full tutorial on how to use **SemanticST**, visit our documentation:  
 
 🔗 [**SemanticST Tutorial Webpage**][https://semanticst-tutorial.readthedocs.io/en/latest/](https://semanticst-tutorial.readthedocs.io/en/latest/)
+

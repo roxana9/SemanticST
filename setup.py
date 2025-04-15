@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="semanticst",  
-    version="1.1.2",
+    version="1.1.3",
     author="Roxana Zahedi",
     author_email="r.zahedi_nasab@unsw.edu.au",
     description="SemanticST: Spatially informed semantic graph learning for effective clustering and integration of spatial transcriptomics",
