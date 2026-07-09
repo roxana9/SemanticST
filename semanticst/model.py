@@ -112,7 +112,9 @@ class DeepMinCutModel(nn.Module):
             torch.Tensor: Computed MinCut loss.
         """
         P = self.sample_gumbel_softmax(embeddings, temperature)
-        C = torch.matmul(P.T, torch.matmul(adjacency, P))
+        AP = torch.sparse.mm(adjacency, P)
+        C = P.T @ AP
+       # C = torch.matmul(P.T, torch.matmul(adjacency, P))
         d = torch.diag(C)
         q = torch.sum(C, dim=1)
         l = (q - d) / q
@@ -130,21 +132,14 @@ class AvgReadout(nn.Module):
         super(AvgReadout, self).__init__()
 
     def forward(self, emb, mask=None):
-        """
-        Computes global embedding from node embeddings.
-
-        Args:
-            emb (torch.Tensor): Node embeddings of shape (N, D).
-            mask (torch.Tensor, optional): Masking matrix.
-
-        Returns:
-            torch.Tensor: Normalised global embedding.
-        """
-        vsum = torch.mm(mask, emb)
-        row_sum = torch.sum(mask, 1)
-        row_sum = row_sum.expand((vsum.shape[1], row_sum.shape[0])).T
-        global_emb = vsum / row_sum 
-          
+        if mask.is_sparse:
+            vsum = torch.sparse.mm(mask, emb)
+            ones = torch.ones(mask.shape[1], 1, device=emb.device, dtype=emb.dtype)
+            row_sum = torch.sparse.mm(mask, ones).clamp(min=1e-8)
+        else:
+            vsum = torch.mm(mask, emb)
+            row_sum = mask.sum(dim=1, keepdim=True).clamp(min=1e-8)
+        global_emb = vsum / row_sum
         return F.normalize(global_emb, p=2, dim=1)
 
 class Encoder(Module):
