@@ -10,7 +10,18 @@ from torch.backends import cudnn
 from scipy.sparse.csc import csc_matrix
 from scipy.sparse.csr import csr_matrix
 from sklearn.neighbors import NearestNeighbors 
-
+from scipy.sparse import coo_matrix
+def construct_sparse_graph(coor, n_neighbors=5):
+    if isinstance(coor, torch.Tensor):
+        coor = coor.cpu().numpy()
+    n = coor.shape[0]
+    nbrs = NearestNeighbors(n_neighbors=n_neighbors + 1).fit(coor)
+    _, indices = nbrs.kneighbors(coor)
+    row = np.repeat(np.arange(n), n_neighbors)
+    col = indices[:, 1:].reshape(-1)
+    data = np.ones(len(row), dtype=np.float32)
+    adj = sp.coo_matrix((data, (row, col)), shape=(n, n))
+    return adj.maximum(adj.T).tocoo()      # symmetric, binary
 def construct_interaction(coor, n_neighbors=5):
     """Constructing spot-to-spot interactive graph"""
     if isinstance(coor, torch.Tensor):
@@ -49,7 +60,25 @@ def construct_interaction(coor, n_neighbors=5):
 
   #  adata.obsm['adj'] = adj
     return adj,graph_neigh
-    
+def construct_sparse_graph(coor, k=5):
+
+    if isinstance(coor, torch.Tensor):
+        coor = coor.cpu().numpy()
+
+    nbrs = NearestNeighbors(n_neighbors=k+1).fit(coor)
+    _, indices = nbrs.kneighbors(coor)
+
+    row = np.repeat(np.arange(coor.shape[0]), k)
+    col = indices[:,1:].reshape(-1)
+
+    data = np.ones(len(row), dtype=np.float32)
+
+    adj = coo_matrix(
+        (data, (row, col)),
+        shape=(coor.shape[0], coor.shape[0])
+    )
+
+    return adj   
 def construct_interaction_KNN(coor, n_neighbors=5):
     if isinstance(coor, torch.Tensor):
         coor = coor.cpu().numpy()
@@ -105,15 +134,17 @@ def preprocess(adata,dtype):
         
         # sc.pp.filter_cells(adata, min_genes=20)
         # sc.pp.filter_genes(adata, min_cells=50)
-        sc.pp.highly_variable_genes(adata, flavor="seurat_v3", n_top_genes=3000)
-        sc.pp.normalize_total(adata, target_sum=1e4)
+        #sc.pp.highly_variable_genes(adata, flavor="seurat_v3", n_top_genes=3000)
+        # sc.pp.normalize_total(adata, target_sum=1e4)
         sc.pp.log1p(adata)
-        adata_Vars =  adata[:, adata.var['highly_variable']]
+        #adata_Vars =  adata[:, adata.var['highly_variable']]
+        adata_Vars=adata
         if isinstance(adata_Vars.X, csc_matrix) or isinstance(adata_Vars.X, csr_matrix):
             feat = adata_Vars.X.toarray()[:, ]
         else:
             feat = adata_Vars.X[:, ] 
         adata.obsm['feat'] = feat
+        print(adata.obsm['feat'].shape)
   
 def get_feature(adata, deconvolution=False):
     if deconvolution:
