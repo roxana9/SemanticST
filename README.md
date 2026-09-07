@@ -58,3 +58,26 @@ For a full tutorial on how to use **SemanticST**, visit our documentation:
 
 🔗 [**SemanticST Tutorial Webpage**][https://semanticst-tutorial.readthedocs.io/en/latest/](https://semanticst-tutorial.readthedocs.io/en/latest/)
 
+## 🔷 Citation
+
+If you use SemanticST in your research, please cite:
+
+> Zahedi, R., Argha, A., Farbehi, N., Bakhshayeshi, I., Ye, Y., Lovell, N. H.,
+> & Alinejad-Rokny, H. (2026). SemanticST: A Scalable Multi-Contextual Graph
+> Learning Framework for Uncovering Spatial Niches and Robust Multi-Sample
+> Integration in Spatial Transcriptomics. *Advanced Science*.
+> https://doi.org/10.1002/advs.77003
+
+```bibtex
+@article{zahedi2026semanticst,
+  title   = {SemanticST: A Scalable Multi-Contextual Graph Learning Framework
+             for Uncovering Spatial Niches and Robust Multi-Sample Integration
+             in Spatial Transcriptomics},
+  author  = {Zahedi, Roxana and Argha, Ahmadreza and Farbehi, Nona and
+             Bakhshayeshi, Ivan and Ye, Youqiong and Lovell, Nigel H. and
+             Alinejad-Rokny, Hamid},
+  journal = {Advanced Science},
+  year    = {2026},
+  doi     = {10.1002/advs.77003}
+}
+```
